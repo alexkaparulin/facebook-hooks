@@ -42,7 +42,6 @@ export default Links;
 const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; align-items:center; justify-content:space-between;
-        border:1px solid red;
         width:950px;
   }
 `
@@ -79,8 +78,8 @@ const SelectorWrap = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; align-items:center;
         padding: 0 10px;
-        height:20px;
-        border-right:1px solid #45565c; border-left:1px solid #45565c;
+        height:15px;
+        border-right:1px solid #45565c;
     }
 `
 const ImgSelector = styled.img`

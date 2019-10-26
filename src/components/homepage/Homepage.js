@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import LeftSidebar from './LeftSidebar';
 import CenterContent from './CenterContent';
-import Banners from './Banners';
+import Banners from '../banners/Banners';
 import { laptop } from '../../enhancers/mediaQuery';
 
 function HomePage(){
@@ -22,7 +22,6 @@ export default HomePage;
 const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; justify-content:center; justify-self:center;
-        border:1px solid black; 
         padding-top:15px;
     }
 `

@@ -10,7 +10,7 @@ const BoxSearch = props => {
             return ( <SearchedPerson key={i} users={user}/> )
         })
     }
-    let checkForUsers = props.usersData.data.length !== 0 ? sortUsersList(props) : console.log('no users yet')
+    let checkForUsers = props.usersData.data.length !== 0 ? sortUsersList(props) : 'Loading Data...'
     return(
         <Wrapper>
            <Header>
