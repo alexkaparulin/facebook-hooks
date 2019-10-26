@@ -46,7 +46,7 @@ const Header = styled.div`
 `
 const P = styled.p`
     @media (min-width: ${laptop}) {
-        color: #1d2129; font-size:12px; font-weight:600;
+        color:'#4b4f56'; font-size:12px; font-weight:600;
         padding-left:7px;
     }
 `

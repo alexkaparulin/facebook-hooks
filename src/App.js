@@ -20,6 +20,4 @@ function App() {
 }
 
 export default App;
-const Wrapper = styled.div`
-  background:#ECF3FF;
-`
+  const Wrapper = styled.div``
