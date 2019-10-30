@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../enhancers/mediaQuery';
 import publicIcon from '../../../static/logos/main/public.png';
+import defaultPic from '../../../static/banners/iherb.png';
+import Notification from './posts/Notification';
+import MyComment from './posts/MyComment';
 
 function UserPost() {
     return(
@@ -20,8 +23,10 @@ function UserPost() {
                 <Text>dfsfdsfds sd fdsf sd fds fds fds fdfhgf dsf dsfdsf dsfb dsn </Text>
             </HeaderText>
             <ImgContainer>
-                <Img></Img>
+                <Img src={defaultPic}></Img>
             </ImgContainer>
+            <Notification/> {/*Notification option Componnent (like,comment,share) */}
+            <MyComment/>{/*Commment Componnent  */}
         </Wrapper>
     )   
 }
@@ -32,7 +37,7 @@ const Wrapper = styled.div`
         display:flex; flex-direction:column; 
         background:#FFFFFF;
         padding:10px 0;
-        margin-top:5px;
+        margin:5px 0;
         border-radius:2px; border: 1px solid #bdc7d8;
     }
 `
@@ -97,3 +102,5 @@ const Img = styled.img`
         height:350px; width:100%;
     }
 `
+
+

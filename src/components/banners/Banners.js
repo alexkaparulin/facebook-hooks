@@ -54,8 +54,6 @@ const AdContainer = styled.div`
         display:flex; flex-direction:column;
         background:#FFFFFF;
         margin-top:10px;
-        position:sticky;
-        top:60px;
         border:1px solid #dddfe2; border-radius:3px;
     }
 `

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SearchedPerson from './SearchedPerson';
 import { laptop } from '../../enhancers/mediaQuery';
+import Loader from 'react-loader-spinner'
 
 const BoxSearch = props => {
 
@@ -10,7 +11,10 @@ const BoxSearch = props => {
             return ( <SearchedPerson key={i} users={user}/> )
         })
     }
-    let checkForUsers = props.usersData.data.length !== 0 ? sortUsersList(props) : 'Loading Data...'
+    let checkForUsers = props.usersData.data.length !== 0 ? sortUsersList(props) :  
+    <SpinnerContainer>
+        <Loader type="Grid" color="#90949c" height={80} width={80} />
+    </SpinnerContainer>
     return(
         <Wrapper>
            <Header>
@@ -25,7 +29,12 @@ const BoxSearch = props => {
 }
 
 export default BoxSearch;
-
+const SpinnerContainer = styled.div`
+    @media (min-width: ${laptop}) {
+        display:flex; justify-content:center;align-items:center;
+        height:100%;
+    }
+` 
 const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; flex-direction:column;
