@@ -8,18 +8,16 @@ import comment from '../../../../static/logos/main/comment.png';
 function MyComment() {
     return(
         <Wrapper>
-            {/* <MyComment> */}
-                <MyProfileImg></MyProfileImg>
-                <InputBox>
-                    <Input placeholder="Write a comment..."></Input>
-                </InputBox>
-                <IconsBox>
-                    <LikeIcon src={comment}></LikeIcon>
-                    <LikeIcon src={comment}></LikeIcon>
-                    <LikeIcon src={comment}></LikeIcon>
-                    <LikeIcon src={comment}></LikeIcon>
-                </IconsBox>
-            {/* </MyComment> */}
+            <MyProfileImg></MyProfileImg>
+            <InputBox>
+                <Input placeholder="Write a comment..."></Input>
+            </InputBox>
+            <IconsBox>
+                <LikeIcon src={comment}></LikeIcon>
+                <LikeIcon src={comment}></LikeIcon>
+                <LikeIcon src={comment}></LikeIcon>
+                <LikeIcon src={comment}></LikeIcon>
+            </IconsBox>
         </Wrapper>
     )   
 }

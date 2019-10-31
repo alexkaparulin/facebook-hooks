@@ -5,6 +5,7 @@ import publicIcon from '../../../static/logos/main/public.png';
 import defaultPic from '../../../static/banners/iherb.png';
 import Notification from './posts/Notification';
 import MyComment from './posts/MyComment';
+import PostComment from './posts/PostComment';
 
 function UserPost() {
     return(
@@ -14,9 +15,9 @@ function UserPost() {
                 <JustifyContent>
                     <UserInfo>
                         <P style={{color:'#2851A3',fontWeight:'700',fontSize:'12px'}}>Manchester United</P>
-                        <P style={{color:'#616770'}}>2 Hrs &middot;&nbsp;<Public src={publicIcon}></Public></P>
+                        <P style={{color:'#616770'}}>2 Hrs &middot;<Public src={publicIcon}></Public></P>
                     </UserInfo>
-                    <OptionsButton>&middot;&middot;&middot;</OptionsButton>
+                    <OptionsButton>&middot;&middot;&middot&nbsp;;</OptionsButton>
                 </JustifyContent>    
             </Header>
             <HeaderText>
@@ -26,6 +27,9 @@ function UserPost() {
                 <Img src={defaultPic}></Img>
             </ImgContainer>
             <Notification/> {/*Notification option Componnent (like,comment,share) */}
+            <ListOfComments>
+                <PostComment/>
+            </ListOfComments>
             <MyComment/>{/*Commment Componnent  */}
         </Wrapper>
     )   
@@ -100,6 +104,12 @@ const ImgContainer = styled.div`
 const Img = styled.img`
     @media (min-width: ${laptop}) {
         height:350px; width:100%;
+    }
+`
+const ListOfComments = styled.div`
+    @media (min-width: ${laptop}) {
+        display:flex;
+        border:1px solid blue;
     }
 `
 
