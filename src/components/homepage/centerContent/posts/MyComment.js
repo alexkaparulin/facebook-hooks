@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../../enhancers/mediaQuery';
 import comment from '../../../../static/logos/main/comment.png';
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { add_comment } from '../../../../configureStore/actions/comment.action';
 
 function MyComment() {
+
+        // const [todos, setTodos] = useState('');
+        const [task, setTask] = useState('');
+        const dispatch = useDispatch(); 
+
+        const handleChangeInput = (e) => {
+          setTask(e.target.value);
+        };
+
+        function handleSubmit (e,task){
+                console.log('sdf',task)
+            if (task) {
+                // setTodos(todos.push({ task }));
+                dispatch(add_comment(task))
+                // setTask('');
+            }
+            e.preventDefault();
+        };
     return(
         <Wrapper>
             <MyProfileImg></MyProfileImg>
-            <InputBox>
-                <Input placeholder="Write a comment..."></Input>
+            <InputBox  onSubmit={(e)=>handleSubmit(e,task)}>
+                <Input placeholder="Write a comment..." onChange={handleChangeInput}></Input>
             </InputBox>
             <IconsBox>
                 <LikeIcon src={comment}></LikeIcon>
@@ -37,7 +55,7 @@ const MyProfileImg = styled.img`
        margin-right:5px;
     }
 `
-const InputBox = styled.div`
+const InputBox = styled.form`
     @media (min-width: ${laptop}) {
         display:flex; align-items:center;
         border-radius:12px 0 0 12px; border: 1px solid #ccd0d5; border-right:none;

@@ -10,7 +10,7 @@ export default (state = initialState, action)=>{
             return {...state, msg : 'Loading Data...'  }
         
         case DATA_FETCHED:
-            return {...state,data : action.payload , msg:'Data fetched' }
+            return {...state, data : action.payload , msg:'Data fetched' }
         
         case FETCH_ERROR:
             return {...state, msg : action.payload}

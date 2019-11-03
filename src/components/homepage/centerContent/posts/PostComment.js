@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../../enhancers/mediaQuery';
 
-function PostComment() {
+function PostComment({text}) {
     return(
         <Wrapper>
             <ImgBox>
@@ -11,7 +11,7 @@ function PostComment() {
             <ColumnBox>
                 <TextBox>
                     <HeaderP>Alex Kaprulin</HeaderP>
-                    <P>A huge game by a huge team!! :)</P>
+                    <P>{text}</P>
                 </TextBox>
                 <Notification><Span>Like · Reply </Span><Time>&nbsp;· 16m</Time></Notification>
             </ColumnBox>

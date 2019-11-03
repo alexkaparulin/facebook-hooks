@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { laptop } from '../../../enhancers/mediaQuery';
 import publicIcon from '../../../static/logos/main/public.png';
 import defaultPic from '../../../static/banners/iherb.png';
@@ -8,6 +9,11 @@ import MyComment from './posts/MyComment';
 import PostComment from './posts/PostComment';
 
 function UserPost() {
+    const commentsArr = useSelector(state => state.postComments);
+    let commentsSort = commentsArr.arrOfComments.map((comment,i)=>{
+        return ( <PostComment key={i} text={comment}/>)
+    });
+
     return(
         <Wrapper>
             <Header>
@@ -17,7 +23,7 @@ function UserPost() {
                         <P style={{color:'#2851A3',fontWeight:'700',fontSize:'12px'}}>Manchester United</P>
                         <P style={{color:'#616770'}}>2 Hrs &middot;<Public src={publicIcon}></Public></P>
                     </UserInfo>
-                    <OptionsButton>&middot;&middot;&middot&nbsp;;</OptionsButton>
+                    <OptionsButton>&middot;&middot;&middot;&nbsp;</OptionsButton>
                 </JustifyContent>    
             </Header>
             <HeaderText>
@@ -28,7 +34,7 @@ function UserPost() {
             </ImgContainer>
             <Notification/> {/*Notification option Componnent (like,comment,share) */}
             <ListOfComments>
-                <PostComment/>
+                {commentsSort}
             </ListOfComments>
             <MyComment/>{/*Commment Componnent  */}
         </Wrapper>
@@ -108,7 +114,7 @@ const Img = styled.img`
 `
 const ListOfComments = styled.div`
     @media (min-width: ${laptop}) {
-        display:flex;
+        display:flex; flex-direction:column;
         border:1px solid blue;
     }
 `
