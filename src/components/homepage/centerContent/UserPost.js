@@ -9,6 +9,7 @@ import MyComment from './posts/MyComment';
 import PostComment from './posts/PostComment';
 
 function UserPost() {
+
     const commentsArr = useSelector(state => state.postComments);
     let commentsSort = commentsArr.arrOfComments.map((comment,i)=>{
         return ( <PostComment key={i} text={comment}/>)
@@ -115,7 +116,8 @@ const Img = styled.img`
 const ListOfComments = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; flex-direction:column;
-        border:1px solid blue;
+        max-height:320px;
+        overflow-y:scroll;
     }
 `
 

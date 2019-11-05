@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../enhancers/mediaQuery';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { openClose_postBox } from '../../../configureStore/actions/CreatePost.action';
 
 function CreatePost() {
+
+    const boolean = useSelector(state => state.createPost.booleanType)
+    const dispatch = useDispatch();
+
     return(
         <Wrapper>
             <Header>
@@ -12,7 +17,7 @@ function CreatePost() {
             <InputWrap>
                 <InputBox>
                     <Img></Img>
-                    <Input placeholder="What's on your mind, Alex?"></Input>
+                    <Input placeholder="What's on your mind, Alex?" onClick={() => dispatch(openClose_postBox(!boolean))}></Input>
                 </InputBox>
             </InputWrap>
             <BottomWrap>

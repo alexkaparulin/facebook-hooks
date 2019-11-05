@@ -1,5 +1,5 @@
 import React ,{ useState } from 'react';
-import {useSelector, useDispatch} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux';
 import styled from 'styled-components';
 import graySearchIcon from '../../static/logos/search/searchIcon.png'; 
 import whiteSearchIcon from '../../static/logos/search/white-search.png' 

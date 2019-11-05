@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../../enhancers/mediaQuery';
 import comment from '../../../../static/logos/main/comment.png';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { add_comment } from '../../../../configureStore/actions/comment.action';
 
 function MyComment() {
 
-        // const [todos, setTodos] = useState('');
         const [task, setTask] = useState('');
         const dispatch = useDispatch(); 
 
@@ -16,19 +15,17 @@ function MyComment() {
         };
 
         function handleSubmit (e,task){
-                console.log('sdf',task)
             if (task) {
-                // setTodos(todos.push({ task }));
                 dispatch(add_comment(task))
-                // setTask('');
             }
+            setTask('');
             e.preventDefault();
         };
     return(
         <Wrapper>
             <MyProfileImg></MyProfileImg>
             <InputBox  onSubmit={(e)=>handleSubmit(e,task)}>
-                <Input placeholder="Write a comment..." onChange={handleChangeInput}></Input>
+                <Input placeholder="Write a comment..." onChange={handleChangeInput} value={!task?'':task }></Input>
             </InputBox>
             <IconsBox>
                 <LikeIcon src={comment}></LikeIcon>

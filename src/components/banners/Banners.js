@@ -45,6 +45,8 @@ export default Banners;
 const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; flex-direction:column;
+        position:sticky;
+        top:5px;
         height:800px; width:270px;
         padding-bottom:10px;
     }

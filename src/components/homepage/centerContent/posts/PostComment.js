@@ -23,13 +23,11 @@ export default PostComment;
 const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex;
-        border:1px solid red;
     }
 `
 const ImgBox = styled.div`
     @media (min-width: ${laptop}) {
         display:flex;
-        border:1px solid green;
     }
 `
 const MyProfileImg = styled.div`
