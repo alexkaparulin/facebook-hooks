@@ -1,6 +1,6 @@
-import { OPEN_BOX, CLOSE_BOX } from "../actions/CreatePost.action";
+import { OPEN_BOX, ADD_NEW_POST } from "../actions/CreatePost.action";
 
-let initialState =  { booleanType: false }
+let initialState =  { booleanType: false, posts: [] }
 
 export default (state = initialState, action)=>{
     
@@ -9,6 +9,10 @@ export default (state = initialState, action)=>{
         case OPEN_BOX: 
             return { 
                 ...state, booleanType: action.payload
+            }
+        case ADD_NEW_POST:
+            return {
+                ...state,  posts  : [...state.posts, action.payload]
             }
         default:
             return state

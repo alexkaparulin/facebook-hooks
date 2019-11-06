@@ -2,21 +2,28 @@ import React ,{ useState } from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../../enhancers/mediaQuery';
 import { useSelector, useDispatch } from 'react-redux';
-import { openClose_postBox } from '../../../../configureStore/actions/CreatePost.action';
+import { openClose_postBox, add_new_post } from '../../../../configureStore/actions/CreatePost.action';
 
 function CreatePostOpened() {
     const [boolean,setClick] = useState(false);
+    const [text,setText] = useState('');
     const dispatch = useDispatch();
-    const closeBox = useSelector(state => state.createPost.booleanType)
+    const closeBox = useSelector(state => state.createPost.booleanType);
 
     function changeText(e){
         setClick(true);
+        setText(e.target.value);
         if(e.target.value === ''){
-            setClick(false)
+            setClick(false);
         }
     }
+    function submitForm(e,text){
+        e.preventDefault();
+        dispatch(add_new_post(text));
+        dispatch(openClose_postBox(!closeBox));
+    }
     return(
-        <Wrapper>
+        <Wrapper onSubmit={(e)=>submitForm(e,text)}>
             <Header>
                 <P>Create Post</P>
                 <Span onClick={()=>dispatch(openClose_postBox(!closeBox))}>&times;</Span>
@@ -65,7 +72,7 @@ function CreatePostOpened() {
 }
 export default CreatePostOpened;
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
     @media (min-width: ${laptop}) {
         display:flex; flex-direction:column; align-items:center;
         height:auto; width:480px;

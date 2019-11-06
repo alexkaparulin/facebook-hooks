@@ -8,11 +8,11 @@ import Notification from './posts/Notification';
 import MyComment from './posts/MyComment';
 import PostComment from './posts/PostComment';
 
-function UserPost() {
+function UserPost({textTitle}) {
 
-    const commentsArr = useSelector(state => state.postComments);
+    let commentsArr = useSelector(state => state.postComments);
     let commentsSort = commentsArr.arrOfComments.map((comment,i)=>{
-        return ( <PostComment key={i} text={comment}/>)
+        return (<PostComment key={i} text={comment}/>)
     });
 
     return(
@@ -22,13 +22,13 @@ function UserPost() {
                 <JustifyContent>
                     <UserInfo>
                         <P style={{color:'#2851A3',fontWeight:'700',fontSize:'12px'}}>Manchester United</P>
-                        <P style={{color:'#616770'}}>2 Hrs &middot;<Public src={publicIcon}></Public></P>
+                        <P style={{color:'#616770'}}>2 Hrs &middot;&nbsp;<Public src={publicIcon}></Public></P>
                     </UserInfo>
                     <OptionsButton>&middot;&middot;&middot;&nbsp;</OptionsButton>
                 </JustifyContent>    
             </Header>
             <HeaderText>
-                <Text>dfsfdsfds sd fdsf sd fds fds fds fdfhgf dsf dsfdsf dsfb dsn </Text>
+                <Text>{textTitle}</Text>
             </HeaderText>
             <ImgContainer>
                 <Img src={defaultPic}></Img>
@@ -77,6 +77,7 @@ const UserInfo = styled.ul`
 `
 const P = styled.li`
     @media (min-width: ${laptop}) {
+        display:flex; align-items:center;
         list-style-type:none;
         font-size:11px;
         margin-left:-35px;

@@ -28,6 +28,7 @@ const Wrapper = styled.div`
 const ImgBox = styled.div`
     @media (min-width: ${laptop}) {
         display:flex;
+        margin:5px;
     }
 `
 const MyProfileImg = styled.div`
