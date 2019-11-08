@@ -1,19 +1,32 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 import { laptop } from '../../../enhancers/mediaQuery';
 import publicIcon from '../../../static/logos/main/public.png';
 import defaultPic from '../../../static/banners/iherb.png';
 import Notification from './posts/Notification';
-import MyComment from './posts/MyComment';
+import comment from '../../../static/logos/main/comment.png';
 import PostComment from './posts/PostComment';
 
 function UserPost({textTitle}) {
 
-    let commentsArr = useSelector(state => state.postComments);
-    let commentsSort = commentsArr.arrOfComments.map((comment,i)=>{
+    const [task, setTask] = useState('');
+    const [comments, addComment] = useState([]);
+
+    let commentsSort = comments.map((comment,i)=>{
         return (<PostComment key={i} text={comment}/>)
     });
+
+    const handleChangeInput = (e) => {
+      setTask(e.target.value);
+    };
+
+    function handleSubmit (e,task){
+        if (task) {
+            addComment([...comments,task])
+        }
+        setTask('');
+        e.preventDefault();
+    };
 
     return(
         <Wrapper>
@@ -33,11 +46,22 @@ function UserPost({textTitle}) {
             <ImgContainer>
                 <Img src={defaultPic}></Img>
             </ImgContainer>
-            <Notification/> {/*Notification option Componnent (like,comment,share) */}
+            <Notification/> {/*Notification option Componnent (like,comment,share)*/}
             <ListOfComments>
                 {commentsSort}
             </ListOfComments>
-            <MyComment/>{/*Commment Componnent  */}
+            <MyCommentContainer>
+                <MyProfileImg></MyProfileImg>
+                <InputBox onSubmit={(e)=>handleSubmit(e,task)}>
+                    <Input placeholder="Write a comment..." onChange={handleChangeInput} value={!task?'':task }></Input>
+                </InputBox>
+                <IconsBox>
+                    <LikeIcon src={comment}></LikeIcon>
+                    <LikeIcon src={comment}></LikeIcon>
+                    <LikeIcon src={comment}></LikeIcon>
+                    <LikeIcon src={comment}></LikeIcon>
+                </IconsBox>
+            </MyCommentContainer>
         </Wrapper>
     )   
 }
@@ -47,7 +71,6 @@ const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; flex-direction:column; 
         background:#FFFFFF;
-        padding:10px 0;
         margin:5px 0;
         border-radius:2px; border: 1px solid #bdc7d8;
     }
@@ -121,5 +144,52 @@ const ListOfComments = styled.div`
         overflow-y:scroll;
     }
 `
+const MyCommentContainer = styled.div`
+    @media (min-width: ${laptop}) {
+        display:flex; align-items:center;
+        height:40px;
+        margin:0 10px;
+    }
+`
+const MyProfileImg = styled.img`
+    @media (min-width: ${laptop}) {
+       height:30px; width:30px;
+       border:1px solid green; border-radius:100%;
+       margin-right:5px;
+    }
+`
+const InputBox = styled.form`
+    @media (min-width: ${laptop}) {
+        display:flex; align-items:center;
+        border-radius:12px 0 0 12px; border: 1px solid #ccd0d5; border-right:none;
+        height:30px; width:50%;
+        background:#F2F3F5;
+    }
+`
+const Input = styled.input`
+    @media (min-width: ${laptop}) {
+        border-radius:12px; border:transparent;
+        color: #8d949e; font-size:12px;
+        background:transparent;
+        padding:0 4px; 
+        outline:none;
+    }
+`
+const IconsBox = styled.div`
+    @media (min-width: ${laptop}) {
+        display:flex; align-items:center; justify-content:flex-end;
+        border-radius:0 12px 12px 0; border: 1px solid #ccd0d5; border-left:none;
+        background:#F2F3F5;
+        width:40%; height:30px;
+    }
+`
+const LikeIcon = styled.img`
+    @media (min-width: ${laptop}) {
+        height:15px; width:15px;
+        margin-right:5px;
+    }
+`
+
+
 
 

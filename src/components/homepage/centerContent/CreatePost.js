@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../enhancers/mediaQuery';
 import { useSelector, useDispatch } from 'react-redux';
-import { openClose_postBox } from '../../../configureStore/actions/CreatePost.action';
+import { openClose_postBox } from '../../../configureStore/actions/createPost.action';
 
 function CreatePost() {
 
@@ -17,7 +17,7 @@ function CreatePost() {
             <InputWrap>
                 <InputBox>
                     <Img></Img>
-                    <Input placeholder="What's on your mind, Alex?" onClick={() => dispatch(openClose_postBox(!boolean))}></Input>
+                    <Input defaultValue="What's on your mind, Alex?" onClick={() => dispatch(openClose_postBox(!boolean))}></Input>
                 </InputBox>
             </InputWrap>
             <BottomWrap>

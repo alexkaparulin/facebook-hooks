@@ -1,6 +1,6 @@
-import { OPEN_BOX, ADD_NEW_POST } from "../actions/CreatePost.action";
+import { OPEN_BOX, ADD_NEW_POST } from "../actions/createPost.action";
 
-let initialState =  { booleanType: false, posts: [] }
+let initialState =  { booleanType: false, posts: [] ,arrOfComments:[] }
 
 export default (state = initialState, action)=>{
     

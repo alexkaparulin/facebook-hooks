@@ -2,7 +2,7 @@ import React ,{ useState } from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../../enhancers/mediaQuery';
 import { useSelector, useDispatch } from 'react-redux';
-import { openClose_postBox, add_new_post } from '../../../../configureStore/actions/CreatePost.action';
+import { openClose_postBox, add_new_post } from '../../../../configureStore/actions/createPost.action';
 
 function CreatePostOpened() {
     const [boolean,setClick] = useState(false);
@@ -31,7 +31,8 @@ function CreatePostOpened() {
             <InputWrap>
                 <InputBox>
                     <Img></Img>
-                    <Input placeholder="What's on your mind, Alex?" onChange={(e)=>changeText(e)}></Input>
+                    <Input placeholder="What's on your mind, Alex?" onChange={(e)=>changeText(e)} 
+                    onClick={()=>console.log('input clicked')}></Input>
                 </InputBox>
             </InputWrap>
             <OptionsWrap>
@@ -80,7 +81,7 @@ const Wrapper = styled.form`
         border-radius:2px; border: 1px solid #bdc7d8;
         position:absolute;
         top:50px;
-        z-index:1;
+        z-index:2;
     }
 `
 const Header = styled.div`

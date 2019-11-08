@@ -12,14 +12,14 @@ function CenterContent() {
     const isTrue = useSelector(state=>state.createPost.booleanType);
     const arrOfPosts = useSelector(state=>state.createPost.posts);
     let sortAllPosts = arrOfPosts.map((post,i)=>{
-        return <UserPost key={i} textTitle={post}/>
+        return <UserPost key={i} textTitle={post} index={i}/>
     }) 
     return(
         <Wrapper>
            <CreatePost/>
-           <div>
+           <WritePost>
                 {isTrue? <CreatePostOpened/> : null}
-           </div>
+           </WritePost>
            <Stories/>
            <ArrOfPosts>
                 <UserPost/>
@@ -36,6 +36,9 @@ const Wrapper = styled.div`
         width:480px;
         margin:0 10px;
     }
+`
+const WritePost = styled.div`
+    @media (min-width: ${laptop}) {}
 `
 const ArrOfPosts = styled.div`
     @media (min-width: ${laptop}) {
