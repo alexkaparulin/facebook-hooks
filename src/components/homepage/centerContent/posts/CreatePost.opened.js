@@ -31,8 +31,7 @@ function CreatePostOpened() {
             <InputWrap>
                 <InputBox>
                     <Img></Img>
-                    <Input placeholder="What's on your mind, Alex?" onChange={(e)=>changeText(e)} 
-                    onClick={()=>console.log('input clicked')}></Input>
+                    <Input placeholder="What's on your mind, Alex?" onChange={(e)=>changeText(e)} ></Input>
                 </InputBox>
             </InputWrap>
             <OptionsWrap>

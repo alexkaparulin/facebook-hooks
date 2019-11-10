@@ -1,30 +1,47 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 import { laptop } from '../../../../enhancers/mediaQuery';
 import like from '../../../../static/logos/main/like.png';
 import comment from '../../../../static/logos/main/comment.png';
 import share from '../../../../static/logos/main/share.png';
+import { set_focus } from '../../../../configureStore/actions/notification.action';
 
 
-function Notification() {
+function Notification({totalComments}) {
+    const dispatch = useDispatch();
+    const [totalLikes,setLike] = useState(0);
+    const [likeColor,setLikeColor] = useState(false); 
+
+    function likeSettings(totalLikes,likeColor){
+        if(likeColor === false){
+            setLike(totalLikes-1);
+            setLikeColor(likeColor);
+        }
+        else{
+            setLike(totalLikes+1);
+            setLikeColor(likeColor);
+        }
+    }
+
     return(
         <Wrapper>
           <UserNotifications>
                 <TotalLikesBox>
                     <LikeIcon src={like}></LikeIcon>
-                    <Likes>325</Likes>
+                    <Likes>{totalLikes}</Likes>
                 </TotalLikesBox>
                 <CommentShareBox>
-                    <Comment>24 Comments</Comment>
+                    <Comment>{!totalComments? 0 : totalComments} Comments</Comment>
                     <Share>15 Shares</Share>
                 </CommentShareBox>
             </UserNotifications>
             <PostNotifications>
-                <Box>
+                <Box onClick={() =>likeSettings(totalLikes,!likeColor)}>
                     <LikeIcon src={like}></LikeIcon>
-                    <Likes style={{fontWeight:'700'}}>Like</Likes>
+                    <Likes style={{fontWeight:'700'}} isClicked={likeColor}>Like</Likes>
                 </Box>
-                <Box>
+                <Box onClick={() => dispatch(set_focus(true))}>
                     <LikeIcon src={comment}></LikeIcon>
                     <Comment style={{fontWeight:'700'}}>Comment</Comment>
                 </Box>
@@ -64,7 +81,9 @@ const LikeIcon = styled.img`
 `
 const Likes = styled.p`
     @media (min-width: ${laptop}) {
-        color:#606770; font-size:12px;
+        color:#606770; 
+        color:${props => props.isClicked ? '#2851A3':'#606770'};
+        font-size:12px;
 }
 `
 const CommentShareBox = styled.div`

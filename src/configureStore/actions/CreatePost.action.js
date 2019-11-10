@@ -12,8 +12,7 @@ export const add_new_post = (post)=>({
     payload: post
 })
 
-export const add_comment = (new_comment,postIndex)=>({
+export const add_comment = (new_comment)=>({
     type: COMMENT,
     comment: new_comment,
-    indexOfPost:postIndex
 })
