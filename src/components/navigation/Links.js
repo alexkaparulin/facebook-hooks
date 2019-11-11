@@ -9,10 +9,11 @@ import messenger from '../../static/navbar/messenger.png'
 import notification from '../../static/navbar/notification.png'
 import help from '../../static/navbar/help.png'
 import options from '../../static/navbar/option-arrow.png'
+import triangle from '../../static/logos/main/triangle.png'
 import FriendRequests from './FriendRequests';
 
 function Links(){
-    
+
     const [isOpen,openCloseRequest] = useState(false);
     function openFriendRequests(isOpen){
         openCloseRequest(isOpen);
@@ -33,6 +34,7 @@ function Links(){
             <StyledLink to=''>Create</StyledLink>
             <SelectorWrap>
                 <ImgSelector src={friendRequest} onClick={()=>openFriendRequests(!isOpen)}></ImgSelector>
+                <Triangle src={triangle} isClicked={isOpen}></Triangle>
                 <ImgSelector style={{height:'19px', width:'20px'}} src={messenger}></ImgSelector>
                 <ImgSelector style={{height:'20px', width:'22px'}} src={notification}></ImgSelector>
             </SelectorWrap>
@@ -96,6 +98,15 @@ const ImgSelector = styled.img`
     @media (min-width: ${laptop}) {
         padding: 0 7px;
         height:22px; width:22px;
+        cursor: pointer;
+    }
+`
+const Triangle = styled.img`
+    @media (min-width: ${laptop}) {
+        display:${props => props.isClicked ? 'flex':'none'};
+        padding: 0 7px;
+        position:absolute; top:33px;
+        height:15px; width:22px
     }
 `
 const OptionsWrap = styled.div`
@@ -113,6 +124,6 @@ const StyledLink = styled(Link)`
 `
 const RequestContainer = styled.div`
     @media (min-width: ${laptop}) {
-        position:absolute; top:45px; right:200px;
+        position:absolute; top:45px; right:220px;
     }
 `
