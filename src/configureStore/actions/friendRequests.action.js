@@ -2,13 +2,13 @@ export const FETCHING_DATA = 'FETCHING_DATA'
 export const DATA_FETCHED  = 'DATA_FETCHED'
 export const FETCH_ERROR  = 'FETCH_ERROR'
 
-export function getData(dispatch) {
+export function getDataArr(dispatch) {
 
 	return () => {
 
 	dispatch({ type: FETCHING_DATA })
 	
-	return fetch("https://randomuser.me/api/?results=20")
+	return fetch("https://randomuser.me/api/?results=15")
 	.then(res=>res.json())
 	.then(res => dispatch({
 		type	: DATA_FETCHED,

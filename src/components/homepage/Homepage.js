@@ -5,12 +5,12 @@ import LeftSidebar from './LeftSidebar';
 import CenterContent from './CenterContent';
 import Banners from '../banners/Banners';
 import { laptop } from '../../enhancers/mediaQuery';
-import { getData } from '../../configureStore/actions/friendRequests.action';
+import { getDataArr } from '../../configureStore/actions/friendRequests.action';
 
 function HomePage(){
     const dispatch = useDispatch();
     useEffect(() => {
-            dispatch(getData(dispatch));
+            dispatch(getDataArr(dispatch));
       });
 
     return(

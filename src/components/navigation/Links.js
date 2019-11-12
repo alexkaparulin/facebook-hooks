@@ -11,10 +11,12 @@ import help from '../../static/navbar/help.png'
 import options from '../../static/navbar/option-arrow.png'
 import triangle from '../../static/logos/main/triangle.png'
 import FriendRequests from './FriendRequests';
+import QuickHelp from './QuickHelp';
 
 function Links(){
 
     const [isOpen,openCloseRequest] = useState(false);
+    const [isOpenHelp,openCloseHelp] = useState(false);
     function openFriendRequests(isOpen){
         openCloseRequest(isOpen);
     }
@@ -42,7 +44,10 @@ function Links(){
                 {isOpen?<FriendRequests/>:null}
             </RequestContainer>
             <OptionsWrap>
-               <ImgSelector src={help}></ImgSelector>
+               <ImgSelector src={help}  onClick={()=>openCloseHelp(!isOpenHelp)}></ImgSelector>
+               <HelpContainer>
+                {isOpenHelp ? <QuickHelp/> : null}
+               </HelpContainer>
                <Img style={{height:'10px',width:'10px',marginLeft:'5px'}} src={options}></Img>
             </OptionsWrap>
         </NavbarWrap>
@@ -112,6 +117,11 @@ const Triangle = styled.img`
 const OptionsWrap = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; align-items:center;
+    }
+`
+const HelpContainer = styled.div`
+    @media (min-width: ${laptop}) {
+        position:absolute; top:45px; right:150px;
     }
 `
 const StyledLink = styled(Link)`
