@@ -12,13 +12,28 @@ import options from '../../static/navbar/option-arrow.png'
 import triangle from '../../static/logos/main/triangle.png'
 import FriendRequests from './FriendRequests';
 import QuickHelp from './QuickHelp';
+import Settings from './Settings';
 
 function Links(){
 
-    const [isOpen,openCloseRequest] = useState(false);
-    const [isOpenHelp,openCloseHelp] = useState(false);
+    const [isFriendsOpen,openCloseFriends] = useState(false);
+    const [isHelpOpen,openCloseHelp] = useState(false);
+    const [isSettingsOpen,openCloseSetting] = useState(false);
+
     function openFriendRequests(isOpen){
-        openCloseRequest(isOpen);
+        openCloseFriends(isOpen);
+        openCloseHelp(!isOpen);
+        openCloseSetting(!isOpen);
+    }
+    function openHelpTab(isOpen){
+        openCloseFriends(!isOpen);
+        openCloseHelp(isOpen);
+        openCloseSetting(!isOpen);
+    }
+    function openSettingsTab(isOpen){
+        openCloseFriends(!isOpen);
+        openCloseHelp(!isOpen);
+        openCloseSetting(isOpen);
     }
 
     return(
@@ -35,20 +50,23 @@ function Links(){
             <StyledLink to='/'>Home</StyledLink>
             <StyledLink to=''>Create</StyledLink>
             <SelectorWrap>
-                <ImgSelector src={friendRequest} onClick={()=>openFriendRequests(!isOpen)}></ImgSelector>
-                <Triangle src={triangle} isClicked={isOpen}></Triangle>
+                <ImgSelector src={friendRequest} onClick={()=>openFriendRequests(!isFriendsOpen)}></ImgSelector>
+                <Triangle src={triangle} isClicked={isFriendsOpen}></Triangle>
                 <ImgSelector style={{height:'19px', width:'20px'}} src={messenger}></ImgSelector>
                 <ImgSelector style={{height:'20px', width:'22px'}} src={notification}></ImgSelector>
             </SelectorWrap>
             <RequestContainer>
-                {isOpen?<FriendRequests/>:null}
+                {isFriendsOpen? <FriendRequests/> : null}
             </RequestContainer>
             <OptionsWrap>
-               <ImgSelector src={help}  onClick={()=>openCloseHelp(!isOpenHelp)}></ImgSelector>
+               <ImgSelector src={help}  onClick={()=>openHelpTab(!isHelpOpen)}></ImgSelector>
                <HelpContainer>
-                {isOpenHelp ? <QuickHelp/> : null}
+                    {isHelpOpen ? <QuickHelp/> : null}
                </HelpContainer>
-               <Img style={{height:'10px',width:'10px',marginLeft:'5px'}} src={options}></Img>
+               <Img style={{height:'10px',width:'10px',marginLeft:'5px'}} src={options} onClick={()=>openSettingsTab(!isSettingsOpen)}></Img>
+               <SettingsContainer>
+                    {isSettingsOpen ? <Settings/> : null}
+               </SettingsContainer>
             </OptionsWrap>
         </NavbarWrap>
     </Wrapper>
@@ -70,6 +88,7 @@ const SearchWrap = styled.div`
 const Img = styled.img`
     @media (min-width: ${laptop}) {
         height:26px; width:25px;
+        cursor:pointer;
     }
 `
 const NavbarWrap = styled.div`
@@ -122,6 +141,11 @@ const OptionsWrap = styled.div`
 const HelpContainer = styled.div`
     @media (min-width: ${laptop}) {
         position:absolute; top:45px; right:150px;
+    }
+`
+const SettingsContainer = styled.div`
+    @media (min-width: ${laptop}) {
+        position:absolute; top:45px; right:120px;
     }
 `
 const StyledLink = styled(Link)`
