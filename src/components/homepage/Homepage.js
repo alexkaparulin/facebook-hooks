@@ -11,7 +11,7 @@ function HomePage(){
     const dispatch = useDispatch();
     useEffect(() => {
             dispatch(getDataArr(dispatch));
-      });
+      },[]);
 
     return(
         <Wrapper>
