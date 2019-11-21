@@ -70,11 +70,11 @@ const ButtonsBox = styled.div`
 `
 const Button = styled.button`
     @media (min-width: ${laptop}) {
+        height:20px; width:80px;
+        text-align: center;
         background:#F5F6F7;
-        padding:4px 8px;
         margin:4px;
-        height:20px;
-        border-color: rgba(0, 0, 0, .4); border-radius:1px;
+        border:1px solid rgba(0, 0, 0, .4); border-radius:1px;
         font-size:10px; font-weight:bold; color: #4B4F56;
         &:hover {
             background-color: #f5f6f7;
@@ -99,7 +99,7 @@ const NavBox = styled.div`
 const P = styled.li`
     @media (min-width: ${laptop}) {
         display:flex; justify-content:center; align-items:center;
-        font-size:11px; font-weight:600; color: #385898; 
+        font-size:11px; font-weight:600; color:#385898; 
         list-style-type: none; cursor: pointer;
         line-height: 3.05; vertical-align: middle;
         padding: 0 17px;
