@@ -42,7 +42,8 @@ const Wrapper = styled.div`
         display:flex; flex-direction:column;
         border: 1px solid #dddfe2; border-radius: 3px;
         background:#FFF;
-        width:250px; height:auto;
+        margin:6px 0;
+        width:280px; height:auto;
   }
 `
 const Top = styled.div`

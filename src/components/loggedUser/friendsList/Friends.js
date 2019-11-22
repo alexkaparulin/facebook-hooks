@@ -1,33 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
-import { laptop } from '../../enhancers/mediaQuery';
+import { laptop } from '../../../enhancers/mediaQuery';
+import SingleFriend from './SingleFriend';
 
-function PhotosBox(){
+function FriendsBox(){
     return(
-    <Wrapper>
+      <Wrapper>
         <Top>
             <Left>
                 <Icon></Icon>
-                <P style={{fontSize:'13px',marginLeft:'4px'}}>Photos</P>
+                <P style={{fontSize:'13px',marginLeft:'4px'}}>Friends &middot;&nbsp;<Span>554</Span></P>
             </Left>
             <Right>
-                <P style={{color:'#385898'}}>Add Photo</P>
+                <P style={{color:'#385898'}}>Find Friends</P>
             </Right>
-      </Top>
-      <Photos>
-
-      </Photos>
-    </Wrapper>
+        </Top>
+        <Photos>
+            <SingleFriend/>
+            <SingleFriend/>
+            <SingleFriend/>
+            <SingleFriend/>
+            <SingleFriend/>
+            <SingleFriend/>
+            <SingleFriend/>
+            <SingleFriend/>
+            <SingleFriend/>
+        </Photos>
+      </Wrapper>
     )   
 }
-export default PhotosBox;
+export default FriendsBox;
 
 const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; flex-direction:column;
-        border: 1px solid #dddfe2; border-radius: 3px;
+        border: 1px solid #dddfe2; border-radius:3px;
+        margin:2px 0 2px 0;
+        width:280px;
         background:#FFF;
-        width:250px; height:auto;
     }   
 `
 const Top = styled.div`
@@ -50,8 +60,13 @@ const Icon = styled.div`
 `
 const P = styled.p`
     @media (min-width: ${laptop}) {
-        display:flex; flex-direction:column;
+        display:flex; align-items:center;
         font-size:10px; color:#1D2129;
+    }   
+`
+const Span = styled.span`
+    @media (min-width: ${laptop}) {
+        color:#90949C; font-size:11px;
     }   
 `
 const Right = styled.div`
@@ -61,6 +76,6 @@ const Right = styled.div`
 `
 const Photos = styled.div`
     @media (min-width: ${laptop}) {
-        display:flex;
+        display:flex; flex-wrap:wrap; justify-content:center;
     }   
 `
