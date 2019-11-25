@@ -1,17 +1,17 @@
-export const FETCHING_DATA = 'FETCHING_DATA'
-export const DATA_FETCHED  = 'DATA_FETCHED'
-export const FETCH_ERROR  = 'FETCH_ERROR'
+export const FETCHING_PHOTOS = 'FETCHING_PHOTOS';
+export const PHOTOS_FETCHED  = 'PHOTOS_FETCHED';
+export const FETCH_ERROR  = 'FETCH_ERROR';
 
 export function fetchUserPhotos(dispatch) {
 
 	return () => {
 
-	dispatch({ type: FETCHING_DATA })
+	dispatch({ type: FETCHING_PHOTOS })
 	
     return fetch('https://picsum.photos/v2/list')
 	.then(res=>res.json())
 	.then(res => dispatch({
-		type	: DATA_FETCHED,
+		type	: PHOTOS_FETCHED,
 		payload	: res }))
 
 	.catch( err => dispatch({

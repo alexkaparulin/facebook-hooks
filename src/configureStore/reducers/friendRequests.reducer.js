@@ -1,15 +1,15 @@
-import { FETCHING_DATA, DATA_FETCHED, FETCH_ERROR } from "../actions/friendRequests.action";
+import { FETCHING_FRIENDS, FRIENDS_FETCHED, FETCH_ERROR } from "../actions/friendRequests.action";
 
-let initialState =  { data : [], msg   : ''   }
+let initialState =  { dataOfFriends : [], msg   : ''   }
 
 export default (state = initialState, action)=>{
     
     switch(action.type){
 
-        case FETCHING_DATA:
+        case FETCHING_FRIENDS:
             return {...state, msg : 'Loading Data...'  }
         
-        case DATA_FETCHED:
+        case FRIENDS_FETCHED:
             return {...state, data : action.payload , msg: 'Data fetched' }
         
         case FETCH_ERROR:

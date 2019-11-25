@@ -8,12 +8,14 @@ import PhotosBox from './photosList/PhotosBox';
 import FriendsBox from './friendsList/Friends';
 import Language from '../banners/Language';
 import CreatePost from '../homepage/centerContent/CreatePost';
-import { fetchUserPhotos } from '../../configureStore/actions/myUser.action';
+import { fetchUserFriends } from '../../configureStore/actions/myUserFriend.action';
+import { fetchUserPhotos } from '../../configureStore/actions/myUserPhoto.action';
 
 function MyUser(){
 
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(fetchUserFriends(dispatch));
         dispatch(fetchUserPhotos(dispatch));
     });
 

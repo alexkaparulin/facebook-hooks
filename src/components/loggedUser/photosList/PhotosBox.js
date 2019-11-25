@@ -5,11 +5,11 @@ import { useSelector } from 'react-redux';
 import SinglePhoto from './SinglePhoto';
 
 function PhotosBox(){
-    const userPhotos = useSelector(state => state.myUser.photosList);
-    let arrOfPhotos = userPhotos.map((photo,i)=>{
-        return( i<9?<SinglePhoto key={i} img={photo.download_url}/>:null)
-    })
+    const userPhotos = useSelector(state => state.myUserPhotos.photosList);
     
+    let arrOfPhotos = userPhotos.map((photo,i) => {
+        return(i<9?<SinglePhoto key={i} img={photo.download_url}/>:null)
+    });
     return(
     <Wrapper>
         <Top>

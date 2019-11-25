@@ -1,17 +1,17 @@
-export const FETCHING_DATA = 'FETCHING_DATA'
-export const DATA_FETCHED  = 'DATA_FETCHED'
-export const FETCH_ERROR  = 'FETCH_ERROR'
+export const FETCHING_FRIENDS = 'FETCHING_FRIENDS';
+export const FRIENDS_FETCHED  = 'FRIENDS_FETCHED';
+export const FETCH_ERROR  = 'FETCH_ERROR';
 
 export function getDataArr(dispatch) {
 
 	return () => {
 
-	dispatch({ type: FETCHING_DATA })
+	dispatch({ type: FETCHING_FRIENDS })
 	
 	return fetch("https://randomuser.me/api/?results=15")
 	.then(res=>res.json())
 	.then(res => dispatch({
-		type	: DATA_FETCHED,
+		type	: FRIENDS_FETCHED,
 		payload	: res }))
 
 	.catch( err => dispatch({

@@ -7,9 +7,10 @@ import BoxSearch from './BoxSearch';
 import { getData } from '../../configureStore/actions/search.action';
 import { laptop } from '../../enhancers/mediaQuery';
 
-
 function Search() {
     const [booleanKey,setClick] = useState(false);
+    const [filtered_arr,filterList] = useState([]);
+    console.log(filtered_arr)
     // const initialState = {data1:null}
     // const [state, dispatch] = useReducer(searchReducer, initialState);
     const search = useSelector(state => state.search) //get specific state from the redux store.
@@ -19,17 +20,25 @@ function Search() {
         setClick(!booleanKey);
         dispatch(getData(dispatch))
     }
-    
+    function searchValue(e){
+        let txt = e.target.value;
+        // console.log(txt);
+        // console.log(search.data.results.name || search.data.results.last)
+        let filtered_list = search.data.results.filter(item => 
+        item.name.first.toLowerCase().includes(txt.toLowerCase()) || item.name.last.toLowerCase().includes(txt.toLowerCase()))
+        // console.log(filtered_list,'found')
+        filterList(filtered_list)
+    }
     return(
         <Wrapper>
             <SearchBox>
-                <Input onClick={() => clickedOnSearch(dispatch)} placeholder='Search'></Input>
+                <Input onClick={() => clickedOnSearch(dispatch)} placeholder='Search' onChange={(e)=>searchValue(e)}></Input>
                 <ImgWrap style={{background: booleanKey? '#4080ff' : '#f5f6f7'}}>
                     <Img src={booleanKey? whiteSearchIcon : graySearchIcon} ></Img>
                 </ImgWrap>
             </SearchBox>
             <DropedBox>
-                {booleanKey? <BoxSearch usersData={search}/> : null}
+                {booleanKey? <BoxSearch usersData={search} on_filter={filtered_arr}/> : null}
             </DropedBox>
       </Wrapper>
     )   

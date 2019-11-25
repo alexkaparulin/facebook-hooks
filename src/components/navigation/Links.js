@@ -67,7 +67,7 @@ function Links(){
                 {isFriendsOpen? <FriendRequests/> : null}
             </RequestContainer>
             <OptionsWrap>
-               <ImgSelector src={help}  onClick={() => openHelpTab(!isHelpOpen)}></ImgSelector>
+               <ImgSelector src={help} onClick={() => openHelpTab(!isHelpOpen)}></ImgSelector>
                <HelpContainer>
                     {isHelpOpen ? <QuickHelp/> : null}
                </HelpContainer>

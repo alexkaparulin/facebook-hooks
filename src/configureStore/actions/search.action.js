@@ -8,7 +8,7 @@ export function getData(dispatch) {
 
 	dispatch({ type: FETCHING_DATA })
 	
-	return fetch("https://randomuser.me/api/?results=1000")
+	return fetch("https://randomuser.me/api/?results=100")
 	.then(res=>res.json())
 	.then(res => dispatch({
 		type	: DATA_FETCHED,

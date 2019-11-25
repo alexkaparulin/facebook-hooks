@@ -5,11 +5,24 @@ import { laptop } from '../../enhancers/mediaQuery';
 import Loader from 'react-loader-spinner'
 
 const BoxSearch = props => {
-
+    console.log(props.usersData,'usersData')
+    console.log(props.on_filter,'on_filter')
     function sortUsersList(props){
-        return props.usersData.data.results.map((user,i)=>{
-            return ( <SearchedPerson key={i} users={user}/> )
-        })
+        if (props.on_filter.length === 0){
+            return props.usersData.data.results.map((user,i)=>{
+                return ( <SearchedPerson key={i} users={user}/> )
+            })
+        }
+        else{
+            if(props.on_filter.length === 0 && props.usersData.length !== 0){
+                return 'no user found'
+            }else{
+                return props.on_filter.map((user,i)=>{
+                    return ( <SearchedPerson key={i} users={user}/> )
+                })
+            }
+            
+        }
     }
     let checkForUsers = props.usersData.data.length !== 0 ? sortUsersList(props) :  
     <SpinnerContainer>

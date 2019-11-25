@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { laptop } from '../../../enhancers/mediaQuery';
 
-function SingleFriend({img}) {
+function SingleFriend({img,friend_name}) {
     return(
       <Wrapper>
           <Img src={img}></Img>
-          <Name>Sdfds Dsgfg</Name>
+          <Name>{friend_name}</Name>
       </Wrapper>
     )   
 }
