@@ -5,11 +5,11 @@ import SingleFriend from './SingleFriend';
 import { useSelector } from 'react-redux';
 
 function FriendsBox(){
+    
     const userFriends = useSelector(state => state.myUserFriends.friends.results);
-    console.log(userFriends)
     if(userFriends !== undefined){
         var arrOfFriends = userFriends.map((friend,i) => {
-            return( <SingleFriend key={i} img={friend.picture.medium} friend_name={friend.name.first+''+friend.name.last}/>)
+            return( <SingleFriend key={i} img={friend.picture.medium} friend_name={friend.name.first+' '+friend.name.last}/>)
         });
     }
     return(

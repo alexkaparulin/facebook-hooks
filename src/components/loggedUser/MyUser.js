@@ -7,9 +7,9 @@ import UserBio from './UserBio';
 import PhotosBox from './photosList/PhotosBox';
 import FriendsBox from './friendsList/Friends';
 import Language from '../banners/Language';
-import CreatePost from '../homepage/centerContent/CreatePost';
 import { fetchUserFriends } from '../../configureStore/actions/myUserFriend.action';
 import { fetchUserPhotos } from '../../configureStore/actions/myUserPhoto.action';
+import Posts from './posts/Posts';
 
 function MyUser(){
 
@@ -41,7 +41,7 @@ function MyUser(){
                 </LanguageBox>
             </Left>
             <Right>
-                <CreatePost/>
+               <Posts/>
             </Right>
         </ContentBox>
     </Wrapper>
