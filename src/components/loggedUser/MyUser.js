@@ -72,7 +72,6 @@ const Right = styled.div`
     @media (min-width: ${laptop}) {
         display:flex;
         width:60%;
-        border:1px solid red;
         padding-top:6px;
         margin-left:5px;
     }   

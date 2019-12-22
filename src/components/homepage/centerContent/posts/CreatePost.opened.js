@@ -5,25 +5,98 @@ import { useSelector, useDispatch } from 'react-redux';
 import { openClose_postBox, add_new_post } from '../../../../configureStore/actions/createPost.action';
 
 function CreatePostOpened() {
+    const dispatch = useDispatch();
     const [boolean,setClick] = useState(false);
     const [text,setText] = useState('');
-    const dispatch = useDispatch();
+    const [post,setPost] = useState({});
     const closeBox = useSelector(state => state.createPost.booleanType);
+
+    const getBase64 = (file) => {
+        return new Promise((resolve,reject) => {
+           const reader = new FileReader();
+           reader.onload = () => resolve(reader.result);
+           reader.onerror = error => reject(error);
+           reader.readAsDataURL(file);
+        });
+    }
+
+    function uploadButton(){
+        const button = document.getElementById('uploadButton');
+        button.click();
+        button.addEventListener('change',(e)=>{
+            e.preventDefault();
+            const file = e.target.files[0];
+
+            getBase64(file).then(base64 => {
+                if(base64 === ''){
+                    setPost({text:text});
+                }else{
+                    setPost({text:text,file:base64});
+                }
+            });
+        })
+    }
 
     function changeText(e){
         setClick(true);
         setText(e.target.value);
+        setPost({text:e.target.value,file:''})
         if(e.target.value === ''){
             setClick(false);
         }
     }
-    function submitForm(e,text){
+    
+    function submitForm(e,post){
         e.preventDefault();
-        dispatch(add_new_post(text));
+        dispatch(add_new_post(post));
         dispatch(openClose_postBox(!closeBox));
     }
+    // const [boolean,setClick] = useState(false);
+    // const [text,setText] = useState('');
+    // const [post,setPost] = useState({});
+    // const dispatch = useDispatch();
+    // const closeBox = useSelector(state => state.createPost.booleanType);
+
+    // const getBase64 = (file) => {
+    //     return new Promise((resolve,reject) => {
+    //        const reader = new FileReader();
+    //        reader.onload = () => resolve(reader.result);
+    //        reader.onerror = error => reject(error);
+    //        reader.readAsDataURL(file);
+    //     });
+    // }
+
+    // function uploadButton(){
+    //     const button = document.getElementById('uploadButton');
+    //     button.click();
+    //     button.addEventListener('change',(e)=>{
+    //         e.preventDefault();
+    //         const file = e.target.files[0];
+
+    //         getBase64(file).then(base64 => {
+    //             if(base64 === ''){
+    //                 setPost({text:text});
+    //             }else{
+    //                 setPost({text:text,file:base64});
+    //             }
+    //         });
+    //     })
+    // }
+
+    // function changeText(e){
+    //     setClick(true);
+    //     setText(e.target.value);
+    //     if(e.target.value === ''){
+    //         setClick(false);
+    //     }
+    // }
+    // function submitForm(e,text){
+    //     e.preventDefault();
+    //     dispatch(add_new_post(text));
+    //     dispatch(openClose_postBox(!closeBox));
+    // }
     return(
-        <Wrapper onSubmit={(e)=>submitForm(e,text)}>
+        <Wrapper onSubmit={(e)=>submitForm(e,post)}>
             <Header>
                 <P>Create Post</P>
                 <Span onClick={()=>dispatch(openClose_postBox(!closeBox))}>&times;</Span>
@@ -36,10 +109,21 @@ function CreatePostOpened() {
             </InputWrap>
             <OptionsWrap>
                 <Buttons>
-                    <Button><ButtonLogo></ButtonLogo>Photo/Video</Button>
-                    <Button style={{margin:'0 6px'}}><ButtonLogo></ButtonLogo>Tag Friends</Button>
-                    <Button><ButtonLogo></ButtonLogo>Feeling/Activity</Button>
-                    <Button><ButtonLogo></ButtonLogo></Button>
+                    <Button onClick={()=>uploadButton()}>
+                        <ButtonLogo></ButtonLogo>
+                        <Input style={{display:'none'}} id="uploadButton" type="file"></Input>
+                        Photo/Video
+                    </Button>
+                    <Button onClick={()=>uploadButton()}>
+                        <ButtonLogo></ButtonLogo>
+                        <Input style={{display:'none'}} id="" type="file"></Input>
+                        Tag Friends
+                    </Button>
+                    <Button onClick={()=>uploadButton()}>
+                        <ButtonLogo></ButtonLogo>
+                        <Input style={{display:'none'}} id="" type="file"></Input>
+                        Feeling/Activity
+                    </Button>
                 </Buttons>
             </OptionsWrap>
             <BottomWrap>

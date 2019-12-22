@@ -9,9 +9,7 @@ function CreatePost() {
     const dispatch = useDispatch();
     const [boolean,setClick] = useState(false);
     const [text,setText] = useState('');
-    const [post,setPost] = useState({
-        text:'',file:''
-    });
+    const [post,setPost] = useState({});
 
     const getBase64 = (file) => {
         return new Promise((resolve,reject) => {
@@ -65,10 +63,19 @@ function CreatePost() {
                 <Buttons>
                     <Button onClick={()=>uploadButton()}>
                         <ButtonLogo></ButtonLogo>
-                        <Input style={{display:'none'}} id="uploadButton" type="file" placeholder="Photo/Video"></Input>
+                        <Input style={{display:'none'}} id="uploadButton" type="file"></Input>
+                        Photo/Video
                     </Button>
-                    <Button style={{margin:'0 6px'}} placeholder="Tag Friend"></Button>
-                    <Button placeholder="Feeling/Activity"></Button>
+                    <Button onClick={()=>uploadButton()}>
+                        <ButtonLogo></ButtonLogo>
+                        <Input style={{display:'none'}} id="" type="file"></Input>
+                        Tag Friends
+                    </Button>
+                    <Button onClick={()=>uploadButton()}>
+                        <ButtonLogo></ButtonLogo>
+                        <Input style={{display:'none'}} id="" type="file"></Input>
+                        Feeling/Activity
+                    </Button>
                 </Buttons>
             </OptionsWrap>
             <BottomWrap>
@@ -166,9 +173,10 @@ const Button = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; align-items:center;
         border-radius:12px; border:none;
-        height:auto; width:auto;
+        height:10px; width:auto;
         outline:none;
         padding: 8px 10px;
+        margin:0 3px;
         background:#f5f6f7;
         color:#4b4f56; font-weight:600; font-size:11px;
     }

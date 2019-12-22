@@ -7,6 +7,7 @@ import CreatePost from './CreatePost';
 
 function Posts() {
     const arrOfPosts = useSelector(state => state.createPost.posts);
+    console.log(arrOfPosts)
     const sortPosts = arrOfPosts.map((post,i)=>{
         return(
             <UserPost key={i} textTitle={post.text} uploadedImg={post.file}/>)}
@@ -20,10 +21,9 @@ function Posts() {
 }
 export default Posts;
 
-const Wrapper = styled.form`
+const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; flex-direction:column;
-        border:1px solid green;
         width:100%;
     }
 `

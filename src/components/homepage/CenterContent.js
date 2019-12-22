@@ -12,7 +12,7 @@ function CenterContent() {
     const isTrue = useSelector(state=>state.createPost.booleanType);
     const arrOfPosts = useSelector(state=>state.createPost.posts);
     let sortAllPosts = arrOfPosts.map((post,i)=>{
-        return <UserPost key={i} textTitle={post} />
+        return <UserPost key={i} textTitle={post.text} postImg={post.file} />
     }) 
     return(
         <Wrapper>

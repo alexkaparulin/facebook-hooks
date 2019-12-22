@@ -32,7 +32,6 @@ export default MyProfileNav;
 const Wrapper = styled.div`
     @media (min-width: ${laptop}) {
         display:flex; flex-direction:column;
-        border:1px solid red;
         height:350px; width:700px;
     }   
 `

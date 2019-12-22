@@ -3,15 +3,14 @@ import { useSelector,useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { laptop } from '../../../enhancers/mediaQuery';
 import publicIcon from '../../../static/logos/main/public.png';
-import defaultPic from '../../../static/banners/iherb.png';
 import Notification from './posts/Notification';
 import comment from '../../../static/logos/main/comment.png';
 import PostComment from './posts/PostComment';
 import { set_focus } from '../../../configureStore/actions/notification.action';
 
-function UserPost({textTitle}) {
+function UserPost({textTitle,postImg}) {
 
-    const [task, setTask] = useState('');
+    const [post, setPost] = useState('');
     const [comments, addComment] = useState([]);
     const inputRef = useRef(null);
     const focus = useSelector(state => state.notification.booleanType);
@@ -22,14 +21,14 @@ function UserPost({textTitle}) {
     });
 
     const handleChangeInput = (e) => {
-      setTask(e.target.value);
+      setPost(e.target.value);
     };
 
-    function handleSubmit (e,task){
-        if (task) {
-            addComment([...comments,task])
+    function handleSubmit (e,post){
+        if (post) {
+            addComment([...comments,post])
         }
-        setTask('');
+        setPost('');
         e.preventDefault();
     };
 
@@ -54,7 +53,7 @@ function UserPost({textTitle}) {
                 <Text>{textTitle}</Text>
             </HeaderText>
             <ImgContainer>
-                <Img src={defaultPic}></Img>
+                <Img src={postImg}></Img>
             </ImgContainer>
             <Notification totalComments={comments.length}/> {/*Notification option Componnent (like,comment,share)*/}
             <ListOfComments>
@@ -62,8 +61,8 @@ function UserPost({textTitle}) {
             </ListOfComments>
             <MyCommentContainer>
                 <MyProfileImg></MyProfileImg>
-                <InputBox onSubmit={(e)=>handleSubmit(e,task)}>
-                    <Input placeholder="Write a comment..." onChange={handleChangeInput} value={!task ? '' :task }
+                <InputBox onSubmit={(e)=>handleSubmit(e,post)}>
+                    <Input placeholder="Write a comment..." onChange={handleChangeInput} value={!post ? '' :post }
                            ref={inputRef} 
                            onBlur={focus === true? focusInput() : null}></Input>
                 </InputBox>
